@@ -1,21 +1,45 @@
 package dt.model;
 
-import dt.interfaces.User;
-import dt.model.question.Question;
+import javax.persistence.*;
 
-import java.util.List;
-
+@Entity
+@Table(name="tests")
 public class Test {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="t_id")
     private int id;
 
-    //TODO: RECONSIDER BECAUSE OF DB IMPLEMENTATION
-    private int type;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "testconfigs_id")
+    private TestConfiguration testConfiguration;
 
-    private User user;
+    @ManyToOne
+    @JoinColumn(name="patient_id")
+    private Patient patient;
 
-    private List<Question> questions;
+    public int getId() {
+        return id;
+    }
 
-    private List<Answer> answers;
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
+    public TestConfiguration getTestConfiguration() {
+        return testConfiguration;
+    }
+
+    public void setTestConfiguration(TestConfiguration testConfiguration) {
+        this.testConfiguration = testConfiguration;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
