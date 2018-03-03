@@ -1,5 +1,7 @@
 package dt.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dt.model.TestConfiguration;
 
 import javax.persistence.*;
@@ -15,7 +17,7 @@ public class Question {
     @Column(name="q_id")
     private int id;
 
-    @NotNull
+//    @NotNull
     @Column(name="q_text")
     private String text;
 
@@ -31,7 +33,8 @@ public class Question {
     @Column(name="q_image2")
     private String image2;
 
-    @ManyToMany(mappedBy = "questions")
+    @ManyToMany(mappedBy = "questions", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<TestConfiguration> testConfigurations;
 
     public int getId() {

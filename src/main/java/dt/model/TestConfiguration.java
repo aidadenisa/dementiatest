@@ -1,5 +1,7 @@
 package dt.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,11 +14,19 @@ public class TestConfiguration {
     @Column(name="testconfigs_id")
     private int id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinTable(name="test_question_config",
             joinColumns = { @JoinColumn(name="testconfigs_id")},
             inverseJoinColumns = {@JoinColumn(name="q_id")})
     private List<Question> questions;
+
+    public TestConfiguration() {
+
+    }
+
+    public TestConfiguration(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

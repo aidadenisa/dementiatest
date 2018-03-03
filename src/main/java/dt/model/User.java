@@ -14,23 +14,23 @@ public class User {
     @Column(name="u_id")
     private int id;
 
-    @NotNull
+//    @NotNull
     @Column(name="u_hash", unique = true)
     private int hash;
 
-    @NotNull
+//    @NotNull
     @Column(name="u_firstname")
     private String firstName;
 
-    @NotNull
+//    @NotNull
     @Column(name="u_lastname")
     private String lastName;
 
-    @NotNull
+//    @NotNull
     @Column(name="u_birthday")
     private Date birthday;
 
-    @NotNull
+//    @NotNull
     @Column(name="u_email", unique = true)
     private String email;
 
@@ -38,7 +38,7 @@ public class User {
     private String address;
 
     // 0 - patient, 1 - doctor
-    @NotNull
+//    @NotNull
     @Column(name="u_role")
     private int role;
 
