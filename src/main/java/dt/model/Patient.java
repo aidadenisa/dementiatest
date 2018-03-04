@@ -1,5 +1,9 @@
 package dt.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +22,7 @@ public class Patient {
     private User userAccount;
 
     @OneToMany(mappedBy="patient")
+    @JsonBackReference
     private List<Test> takenTests;
 
     @ManyToMany(mappedBy = "patients")

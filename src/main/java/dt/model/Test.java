@@ -1,5 +1,8 @@
 package dt.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +20,7 @@ public class Test {
 
     @ManyToOne
     @JoinColumn(name="patient_id")
+    @JsonManagedReference
     private Patient patient;
 
     public int getId() {
