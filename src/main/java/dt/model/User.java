@@ -16,7 +16,7 @@ public class User {
 
 //    @NotNull
     @Column(name="u_hash", unique = true)
-    private int hash;
+    private String hash;
 
 //    @NotNull
     @Column(name="u_firstname")
@@ -50,11 +50,11 @@ public class User {
 //        this.id = id;
 //    }
 
-    public int getHash() {
+    public String getHash() {
         return hash;
     }
 
-    public void setHash(int hash) {
+    public void setHash(String hash) {
         this.hash = hash;
     }
 
