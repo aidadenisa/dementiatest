@@ -22,10 +22,11 @@ public class Patient {
     private User userAccount;
 
     @OneToMany(mappedBy="patient")
-    @JsonBackReference
+    @JsonIgnore
     private List<Test> takenTests;
 
     @ManyToMany(mappedBy = "patients")
+    @JsonIgnore
     private List<Doctor> doctors;
 
     public int getId() {

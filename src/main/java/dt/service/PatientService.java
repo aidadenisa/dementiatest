@@ -1,5 +1,6 @@
 package dt.service;
 
+import dt.model.Doctor;
 import dt.model.Patient;
 import dt.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private DoctorService doctorService;
 
     public List<Patient> getAllPatients() {
 
@@ -36,5 +40,27 @@ public class PatientService {
 
     public void deletePatient(int patientConfigId) {
         patientRepository.delete(patientConfigId);
+    }
+
+    public List<Patient> getPatientsOfDoctor(int doctorId) {
+        Doctor doctor = doctorService.getDoctor(doctorId);
+        if(doctor != null) {
+            return doctor.getPatients();
+        } else {
+            return null;
+        }
+    }
+
+    public List<Patient> savePatientOfDoctor(int doctorId, Patient patient) {
+
+        Doctor doctor = doctorService.getDoctor(doctorId);
+        if(doctor != null) {
+            doctor.getPatients().add(patient);
+            doctorService.updateDoctor(doctor);
+            return doctor.getPatients();
+        } else {
+            return null;
+        }
+
     }
 }

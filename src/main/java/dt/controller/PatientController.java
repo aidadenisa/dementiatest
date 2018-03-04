@@ -38,4 +38,13 @@ public class PatientController {
         patientService.deletePatient(patientId);
     }
 
+    @RequestMapping("doctors/{doctorId}/patients")
+    public List<Patient> getPatientsOfDoctor(@PathVariable int doctorId) {
+        return patientService.getPatientsOfDoctor(doctorId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "doctors/{doctorId}/patients")
+    public List<Patient> savePatientOfDoctor(@PathVariable int doctorId, @RequestBody Patient patient) {
+        return patientService.savePatientOfDoctor(doctorId,patient);
+    }
 }
