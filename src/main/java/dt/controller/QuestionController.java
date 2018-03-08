@@ -40,8 +40,8 @@ public class QuestionController {
     }
 
     @RequestMapping(method = RequestMethod.POST ,value = "testconfigs/{testConfigId}/questions")
-    public void saveQuestionsFromATestConfig(@PathVariable int testConfigId, @RequestBody Question question) {
-        questionService.saveQuestionToTestConfiguration(testConfigId, question);
+    public void saveQuestionsFromATestConfig(@PathVariable int testConfigId, @RequestBody List<Question> questions) {
+        questionService.saveQuestionToTestConfiguration(testConfigId, questions);
     }
 
     @RequestMapping("testconfigs/{testConfigId}/questions/{questionId}")

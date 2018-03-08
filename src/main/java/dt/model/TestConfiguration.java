@@ -14,7 +14,10 @@ public class TestConfiguration {
     @Column(name="testconfigs_id")
     private int id;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @Column(name="t_name")
+    private String name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="test_question_config",
             joinColumns = { @JoinColumn(name="testconfigs_id")},
             inverseJoinColumns = {@JoinColumn(name="q_id")})
@@ -42,5 +45,13 @@ public class TestConfiguration {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

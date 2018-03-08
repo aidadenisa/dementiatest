@@ -45,4 +45,5 @@ public class Test {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
 }

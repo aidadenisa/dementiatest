@@ -33,6 +33,30 @@ public class Question {
     @Column(name="q_image2")
     private String image2;
 
+    @Column(name="q_yesOrNoConfig")
+    private Boolean yesOrNoConfiguration;
+
+    @Column(name="q_onlyOccasionally")
+    private Boolean onlyOccasionallyOption;
+
+    @Column(name="q_yesWithSpecification")
+    private Boolean yesAnswerWithSpecification;
+
+    @Column(name="q_dateConfig")
+    private Boolean dateConfiguration;
+
+    @Column(name="q_noImmediateAnswerConfig")
+    private Boolean noImmediateAnswer;
+
+    @Column(name="q_drawingConfig")
+    private Boolean drawingConfiguration;
+
+    @Column(name="q_multipleTextConfig")
+    private Boolean multipleTextConfiguration;
+
+    @Column(name="q_dragAndDropConfig")
+    private Boolean dragAndDropConfiguration;
+
     @ManyToMany(mappedBy = "questions", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<TestConfiguration> testConfigurations;
@@ -91,5 +115,69 @@ public class Question {
 
     public void setTestConfigurations(List<TestConfiguration> testConfigurations) {
         this.testConfigurations = testConfigurations;
+    }
+
+    public Boolean getYesOrNoConfiguration() {
+        return yesOrNoConfiguration;
+    }
+
+    public Boolean getOnlyOccasionallyOption() {
+        return onlyOccasionallyOption;
+    }
+
+    public Boolean getYesAnswerWithSpecification() {
+        return yesAnswerWithSpecification;
+    }
+
+    public void setYesOrNoConfiguration(Boolean yesOrNoConfiguration) {
+        this.yesOrNoConfiguration = yesOrNoConfiguration;
+    }
+
+    public void setOnlyOccasionallyOption(Boolean onlyOccasionallyOption) {
+        this.onlyOccasionallyOption = onlyOccasionallyOption;
+    }
+
+    public void setYesAnswerWithSpecification(Boolean yesAnswerWithSpecification) {
+        this.yesAnswerWithSpecification = yesAnswerWithSpecification;
+    }
+
+    public Boolean getDateConfiguration() {
+        return dateConfiguration;
+    }
+
+    public void setDateConfiguration(Boolean dateConfiguration) {
+        this.dateConfiguration = dateConfiguration;
+    }
+
+    public Boolean getNoImmediateAnswer() {
+        return noImmediateAnswer;
+    }
+
+    public void setNoImmediateAnswer(Boolean noImmediateAnswer) {
+        this.noImmediateAnswer = noImmediateAnswer;
+    }
+
+    public Boolean getDrawingConfiguration() {
+        return drawingConfiguration;
+    }
+
+    public void setDrawingConfiguration(Boolean drawingConfiguration) {
+        this.drawingConfiguration = drawingConfiguration;
+    }
+
+    public Boolean getMultipleTextConfiguration() {
+        return multipleTextConfiguration;
+    }
+
+    public void setMultipleTextConfiguration(Boolean multipleTextConfiguration) {
+        this.multipleTextConfiguration = multipleTextConfiguration;
+    }
+
+    public Boolean getDragAndDropConfiguration() {
+        return dragAndDropConfiguration;
+    }
+
+    public void setDragAndDropConfiguration(Boolean dragAndDropConfiguration) {
+        this.dragAndDropConfiguration = dragAndDropConfiguration;
     }
 }
