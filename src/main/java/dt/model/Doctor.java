@@ -1,9 +1,6 @@
 package dt.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,7 +14,7 @@ public class Doctor {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "u_id")
-    private User userAccount;
+    private UserAccount userAccount;
 
     @ManyToMany
     @JoinTable(name="doctors_patients",
@@ -33,11 +30,11 @@ public class Doctor {
 //        this.id = id;
 //    }
 
-    public User getUserAccount() {
+    public UserAccount getUserAccount() {
         return userAccount;
     }
 
-    public void setUserAccount(User userAccount) {
+    public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
 

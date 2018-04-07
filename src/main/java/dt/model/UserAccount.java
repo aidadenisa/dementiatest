@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
-public class User {
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

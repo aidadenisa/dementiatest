@@ -1,11 +1,8 @@
 package dt.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,7 +16,7 @@ public class Patient {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "u_id")
-    private User userAccount;
+    private UserAccount userAccount;
 
     @OneToMany(mappedBy="patient")
     @JsonIgnore
@@ -37,11 +34,11 @@ public class Patient {
 //        this.id = id;
 //    }
 
-    public User getUserAccount() {
+    public UserAccount getUserAccount() {
         return userAccount;
     }
 
-    public void setUserAccount(User userAccount) {
+    public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
 

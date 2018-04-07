@@ -26,7 +26,6 @@ public class DoctorController {
     @RequestMapping(method = RequestMethod.POST, value = "/doctors")
     public void addDoctor(@RequestBody Doctor doctor) {
         doctorService.addDoctor(doctor);
-        int a =2;
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/doctors")
