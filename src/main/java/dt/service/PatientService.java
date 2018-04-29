@@ -2,6 +2,7 @@ package dt.service;
 
 import dt.model.Doctor;
 import dt.model.Patient;
+import dt.model.UserAccount;
 import dt.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class PatientService {
 
     @Autowired
     private DoctorService doctorService;
+
+    @Autowired
+    private UserService userService;
 
     public List<Patient> getAllPatients() {
 
@@ -62,5 +66,16 @@ public class PatientService {
             return null;
         }
 
+    }
+
+    public Patient getPatientAttachedToAccount(int userId) {
+        return patientRepository.findByUserAccountId(userId);
+    }
+
+    public void addPatientWithAccount(int userId) {
+        UserAccount user = userService.getUser(userId);
+        Patient newPatient = new Patient();
+        newPatient.setUserAccount(user);
+        patientRepository.save(newPatient);
     }
 }

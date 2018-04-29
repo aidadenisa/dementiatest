@@ -1,6 +1,8 @@
 package dt.controller;
 
+import dt.model.Patient;
 import dt.model.UserAccount;
+import dt.service.PatientService;
 import dt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -64,7 +66,5 @@ public class UserController {
         user.setHash(bCryptPasswordEncoder.encode(user.getHash()));
         userService.saveUser(user);
     }
-
-//    @RequestMapping("/users/")
 
 }
