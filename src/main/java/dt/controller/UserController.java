@@ -59,11 +59,12 @@ public class UserController {
 ////        userService.saveUser(user);
 //    }
 
-    @RequestMapping(method = RequestMethod.POST, value="/users/register")
+    @RequestMapping(method = RequestMethod.POST, value="/register")
     public void registerUser(@RequestBody UserAccount user) {
         user.setHash(bCryptPasswordEncoder.encode(user.getHash()));
         userService.saveUser(user);
     }
 
+//    @RequestMapping("/users/")
 
 }
