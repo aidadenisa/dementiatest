@@ -24,6 +24,11 @@ public class QuestionController {
         return questionService.getQuestion(questionId);
     }
 
+    @RequestMapping(method = RequestMethod.POST ,value = "/questions")
+    public void updateQuestion(@RequestBody List<Question> questions) {
+        questionService.updateQuestions(questions);
+    }
+
     @RequestMapping(method = RequestMethod.PUT ,value = "/questions")
     public void updateQuestion(@RequestBody Question question) {
         questionService.updateQuestion(question);

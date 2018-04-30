@@ -59,4 +59,13 @@ public class QuestionService {
 
         }
     }
+
+    public void updateQuestions(List<Question> questions) {
+
+//        for( int i = 0; i < questions.size(); i++ ) {
+//            questionRepository.save(questions.get(i));
+//        }
+
+        questionRepository.save(questions);
+    }
 }

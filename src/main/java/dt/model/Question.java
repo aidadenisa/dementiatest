@@ -57,6 +57,9 @@ public class Question {
     @Column(name="q_dragAndDropConfig")
     private Boolean dragAndDropConfiguration;
 
+    @Column(name="q_inputConfig")
+    private Boolean inputConfiguration;
+
     @ManyToMany(mappedBy = "questions", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<TestConfiguration> testConfigurations;
@@ -179,5 +182,13 @@ public class Question {
 
     public void setDragAndDropConfiguration(Boolean dragAndDropConfiguration) {
         this.dragAndDropConfiguration = dragAndDropConfiguration;
+    }
+
+    public Boolean getInputConfiguration() {
+        return inputConfiguration;
+    }
+
+    public void setInputConfiguration(Boolean inputConfiguration) {
+        this.inputConfiguration = inputConfiguration;
     }
 }
