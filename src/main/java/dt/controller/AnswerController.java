@@ -24,8 +24,8 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/answers")
-    public void addAnswer(@RequestBody Answer answer) {
-        answerService.addAnswer(answer);
+    public void addAnswer(@RequestBody List<Answer> answers) {
+        answerService.addAnswers(answers);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/answers")
@@ -36,6 +36,11 @@ public class AnswerController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/answers/{answerId}")
     public void deleteAnswer(@PathVariable int answerId) {
         answerService.deleteAnswer(answerId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/patient/{patientId}/testConfig/{testConfigId}/answers")
+    public void saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
+        answerService.saveAnswersToTest(patientId, testConfigId, answers);
     }
 
 }

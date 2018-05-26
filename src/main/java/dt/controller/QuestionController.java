@@ -1,5 +1,6 @@
 package dt.controller;
 
+import dt.model.ConnectPoint;
 import dt.model.Question;
 import dt.model.TestConfiguration;
 import dt.service.QuestionService;
@@ -25,7 +26,7 @@ public class QuestionController {
     }
 
     @RequestMapping(method = RequestMethod.POST ,value = "/questions")
-    public void updateQuestion(@RequestBody List<Question> questions) {
+    public void createQuestion(@RequestBody List<Question> questions) {
         questionService.updateQuestions(questions);
     }
 
@@ -35,7 +36,7 @@ public class QuestionController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE ,value = "/questions/{questionId}")
-    public void updateQuestion(@PathVariable int questionId) {
+    public void deleteQuestion(@PathVariable int questionId) {
         questionService.deleteQuestion(questionId);
     }
 
@@ -52,6 +53,11 @@ public class QuestionController {
     @RequestMapping("testconfigs/{testConfigId}/questions/{questionId}")
     public Question getQuestionFromTestConfig(@PathVariable int testConfigId, @PathVariable int questionId) {
         return questionService.getQuestion(questionId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST ,value = "questions/{questionId}/points")
+    public void saveQuestionPoints(@PathVariable int questionId, @RequestBody List<ConnectPoint> points) {
+        questionService.savePointsToQuestion(questionId, points);
     }
 
 }

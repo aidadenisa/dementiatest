@@ -1,6 +1,8 @@
 package dt.service;
 
+import dt.model.Patient;
 import dt.model.Test;
+import dt.model.TestConfiguration;
 import dt.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,10 @@ public class TestService {
     }
 
     public void addTest(Test test) {
-        testRepository.save(test);
+        Test existingTest = testRepository.findByPatientAndTestConfiguration(test.getPatient(),test.getTestConfiguration());
+        if(existingTest == null) {
+            testRepository.save(test);
+        }
     }
 
     public Test getTest(int testId) {
@@ -37,5 +42,8 @@ public class TestService {
     public void deleteTest(int testConfigId) {
         testRepository.delete(testConfigId);
     }
-    
+
+    public Test getTestByPatientAndConfiguration(TestConfiguration testConfiguration, Patient patient) {
+        return testRepository.findByPatientAndTestConfiguration(patient,testConfiguration);
+    }
 }

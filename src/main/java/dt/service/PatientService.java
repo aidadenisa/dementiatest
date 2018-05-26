@@ -5,6 +5,7 @@ import dt.model.Patient;
 import dt.model.UserAccount;
 import dt.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -73,7 +74,9 @@ public class PatientService {
     }
 
     public void addPatientWithAccount(int userId) {
-        UserAccount user = userService.getUser(userId);
+//        UserAccount user = userService.getUser(userId);
+        UserAccount user = new UserAccount();
+        user.setId(userId);
         Patient newPatient = new Patient();
         newPatient.setUserAccount(user);
         patientRepository.save(newPatient);

@@ -6,11 +6,12 @@ import dt.model.TestConfiguration;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.awt.*;
 import java.util.List;
 
 @Entity
 @Table(name="questions")
-public class Question {
+public class Question implements Comparable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +60,12 @@ public class Question {
 
     @Column(name="q_inputConfig")
     private Boolean inputConfiguration;
+
+    @Column(name="q_index")
+    private int index;
+
+    @OneToMany(mappedBy="question")
+    private List<ConnectPoint> points;
 
     @ManyToMany(mappedBy = "questions", fetch = FetchType.LAZY)
     @JsonIgnore
@@ -190,5 +197,28 @@ public class Question {
 
     public void setInputConfiguration(Boolean inputConfiguration) {
         this.inputConfiguration = inputConfiguration;
+    }
+
+    public List<ConnectPoint> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<ConnectPoint> points) {
+        this.points = points;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+
+        return this.index - ((Question)o).getIndex();
     }
 }

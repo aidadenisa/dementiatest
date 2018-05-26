@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class TestConfigurationService {
 
         List<TestConfiguration> testconfigs = new ArrayList<>();
         testConfigurationRepository.findAll().forEach(testconfigs::add);
+        Collections.sort(testconfigs.get(3).getQuestions());
         return testconfigs;
 
     }

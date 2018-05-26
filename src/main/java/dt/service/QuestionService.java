@@ -1,8 +1,10 @@
 package dt.service;
 
+import dt.model.ConnectPoint;
 import dt.model.Question;
 import dt.model.Test;
 import dt.model.TestConfiguration;
+import dt.repository.ConnectPointsRepository;
 import dt.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ public class QuestionService {
 
     @Autowired
     private TestConfigurationService testConfigurationService;
+
+    @Autowired
+    private ConnectPointsService connectPointsService;
 
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
@@ -67,5 +72,16 @@ public class QuestionService {
 //        }
 
         questionRepository.save(questions);
+    }
+
+    public void savePointsToQuestion(int questionId, List<ConnectPoint> points) {
+        Question question = questionRepository.findOne(questionId);
+
+        for (ConnectPoint point : points) {
+            point.setQuestion(question);
+        }
+
+        connectPointsService.savePoints(points);
+
     }
 }
