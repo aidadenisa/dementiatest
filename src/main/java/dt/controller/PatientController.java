@@ -19,7 +19,7 @@ public class PatientController {
     }
 
     @RequestMapping("/patients/{patientId}")
-    public Patient getAllPatients(@PathVariable int patientId) {
+    public Patient getPatient(@PathVariable int patientId) {
         return patientService.getPatient(patientId);
     }
 
@@ -54,7 +54,7 @@ public class PatientController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/{userId}/patient")
-    public void savePatientWithAccount(@PathVariable int userId) {
-        patientService.addPatientWithAccount(userId);
+    public Patient savePatientWithAccount(@PathVariable int userId) {
+        return patientService.addPatientWithAccount(userId);
     }
 }

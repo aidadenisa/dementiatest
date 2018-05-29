@@ -1,6 +1,7 @@
 package dt.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Test {
     private TestConfiguration testConfiguration;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="patient_id")
     private Patient patient;
 

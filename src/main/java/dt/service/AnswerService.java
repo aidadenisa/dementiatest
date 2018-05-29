@@ -80,7 +80,7 @@ public class AnswerService {
         answerRepository.save(answers);
     }
 
-    public void saveAnswersToTest(int patientId, int testConfigId, List<Answer> answers) {
+    public List<Answer> saveAnswersToTest(int patientId, int testConfigId, List<Answer> answers) {
 
         TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
         Patient patient = patientService.getPatient(patientId);
@@ -115,6 +115,6 @@ public class AnswerService {
 
         }
 
-        answerRepository.save(answers);
+        return (List<Answer>)answerRepository.save(answers);
     }
 }

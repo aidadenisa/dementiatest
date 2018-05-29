@@ -19,7 +19,6 @@ public class Patient {
     private UserAccount userAccount;
 
     @OneToMany(mappedBy="patient")
-    @JsonIgnore
     private List<Test> takenTests;
 
     @ManyToMany(mappedBy = "patients")

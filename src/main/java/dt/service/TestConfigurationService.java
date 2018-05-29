@@ -20,7 +20,11 @@ public class TestConfigurationService {
 
         List<TestConfiguration> testconfigs = new ArrayList<>();
         testConfigurationRepository.findAll().forEach(testconfigs::add);
-        Collections.sort(testconfigs.get(3).getQuestions());
+        for( int i = 0; i< testconfigs.size(); i++) {
+            if(testconfigs.get(i).getQuestions().get(0).getIndex()>0) {
+                Collections.sort(testconfigs.get(i).getQuestions());
+            }
+        }
         return testconfigs;
 
     }

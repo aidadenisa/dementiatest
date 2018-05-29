@@ -73,12 +73,12 @@ public class PatientService {
         return patientRepository.findByUserAccountId(userId);
     }
 
-    public void addPatientWithAccount(int userId) {
+    public Patient addPatientWithAccount(int userId) {
 //        UserAccount user = userService.getUser(userId);
         UserAccount user = new UserAccount();
         user.setId(userId);
         Patient newPatient = new Patient();
         newPatient.setUserAccount(user);
-        patientRepository.save(newPatient);
+        return patientRepository.save(newPatient);
     }
 }

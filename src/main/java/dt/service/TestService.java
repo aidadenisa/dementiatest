@@ -3,6 +3,7 @@ package dt.service;
 import dt.model.Patient;
 import dt.model.Test;
 import dt.model.TestConfiguration;
+import dt.repository.TestConfigurationRepository;
 import dt.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,12 @@ public class TestService {
 
     @Autowired
     private TestRepository testRepository;
+
+    @Autowired
+    private TestConfigurationService testConfigurationService;
+
+    @Autowired
+    private PatientService patientService;
 
     public List<Test> getAllTests() {
 
@@ -45,5 +52,13 @@ public class TestService {
 
     public Test getTestByPatientAndConfiguration(TestConfiguration testConfiguration, Patient patient) {
         return testRepository.findByPatientAndTestConfiguration(patient,testConfiguration);
+    }
+
+    public Test getTestOfPatientWithConfig(int patientId, int testConfigId) {
+
+        TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
+        Patient patient = patientService.getPatient(patientId);
+
+        return testRepository.findByPatientAndTestConfiguration(patient, testConfiguration);
     }
 }

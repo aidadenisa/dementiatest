@@ -39,8 +39,8 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/patient/{patientId}/testConfig/{testConfigId}/answers")
-    public void saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
-        answerService.saveAnswersToTest(patientId, testConfigId, answers);
+    public List<Answer> saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
+        return answerService.saveAnswersToTest(patientId, testConfigId, answers);
     }
 
 }
