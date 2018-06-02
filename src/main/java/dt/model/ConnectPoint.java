@@ -3,7 +3,6 @@ package dt.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 @Table(name="connect_points")
@@ -24,7 +23,7 @@ public class ConnectPoint {
     private String code;
 
     @Column(name="cp_index")
-    private int Index;
+    private int index;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -50,11 +49,11 @@ public class ConnectPoint {
     }
 
     public int getIndex() {
-        return Index;
+        return index;
     }
 
     public void setIndex(int index) {
-        Index = index;
+        this.index = index;
     }
 
     public Question getQuestion() {

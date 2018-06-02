@@ -61,8 +61,17 @@ public class Question implements Comparable{
     @Column(name="q_inputConfig")
     private Boolean inputConfiguration;
 
+    @Column(name="q_similatitiesConfig")
+    private Boolean similatitiesConfiguration;
+
+    @Column(name="q_memoryConfig")
+    private Boolean memoryConfiguration;
+
     @Column(name="q_index")
     private int index;
+
+    @Column(name="q_correctAnswer")
+    private String correctAnswer;
 
     @OneToMany(mappedBy="question")
     private List<ConnectPoint> points;
@@ -220,5 +229,29 @@ public class Question implements Comparable{
     public int compareTo(Object o) {
 
         return this.index - ((Question)o).getIndex();
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public Boolean getSimilatitiesConfiguration() {
+        return similatitiesConfiguration;
+    }
+
+    public void setSimilatitiesConfiguration(Boolean similatitiesConfiguration) {
+        this.similatitiesConfiguration = similatitiesConfiguration;
+    }
+
+    public Boolean getMemoryConfiguration() {
+        return memoryConfiguration;
+    }
+
+    public void setMemoryConfiguration(Boolean memoryConfiguration) {
+        this.memoryConfiguration = memoryConfiguration;
     }
 }

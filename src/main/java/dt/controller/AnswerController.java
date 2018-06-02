@@ -1,6 +1,7 @@
 package dt.controller;
 
 import dt.model.Answer;
+import dt.model.Question;
 import dt.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

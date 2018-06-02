@@ -28,6 +28,9 @@ public class Answer {
     @Column(name="a_answer")
     private String answer;
 
+    @Column(name="a_score")
+    private int score;
+
     public int getId() {
         return id;
     }
@@ -66,5 +69,13 @@ public class Answer {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

@@ -55,7 +55,7 @@ public class QuestionService {
         }
     }
 
-    public void saveQuestionToTestConfiguration(int testConfigId, List<Question> questions) {
+    public void saveQuestionsToTestConfiguration(int testConfigId, List<Question> questions) {
         TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
         if(testConfiguration != null) {
             questions.forEach(testConfiguration.getQuestions()::add);

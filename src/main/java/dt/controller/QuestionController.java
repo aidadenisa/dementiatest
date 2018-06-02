@@ -2,7 +2,6 @@ package dt.controller;
 
 import dt.model.ConnectPoint;
 import dt.model.Question;
-import dt.model.TestConfiguration;
 import dt.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +46,7 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.POST ,value = "testconfigs/{testConfigId}/questions")
     public void saveQuestionsFromATestConfig(@PathVariable int testConfigId, @RequestBody List<Question> questions) {
-        questionService.saveQuestionToTestConfiguration(testConfigId, questions);
+        questionService.saveQuestionsToTestConfiguration(testConfigId, questions);
     }
 
     @RequestMapping("testconfigs/{testConfigId}/questions/{questionId}")
