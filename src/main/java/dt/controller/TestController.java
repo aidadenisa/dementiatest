@@ -29,8 +29,8 @@ public class TestController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/tests")
-    public void updateTest(@RequestBody Test test) {
-        testService.updateTest(test);
+    public Test updateTest(@RequestBody Test test) {
+        return testService.updateTest(test);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/tests/{testId}")

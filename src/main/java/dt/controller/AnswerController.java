@@ -2,6 +2,7 @@ package dt.controller;
 
 import dt.model.Answer;
 import dt.model.Question;
+import dt.model.Test;
 import dt.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/patient/{patientId}/testConfig/{testConfigId}/answers")
-    public List<Answer> saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
+    public Test saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
         return answerService.saveAnswersToTest(patientId, testConfigId, answers);
     }
 

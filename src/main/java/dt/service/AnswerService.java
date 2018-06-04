@@ -94,7 +94,7 @@ public class AnswerService {
         answerRepository.save(answers);
     }
 
-    public List<Answer> saveAnswersToTest(int patientId, int testConfigId, List<Answer> answers) {
+    public Test saveAnswersToTest(int patientId, int testConfigId, List<Answer> answers) {
 
         TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
         Patient patient = patientService.getPatient(patientId);
@@ -128,9 +128,25 @@ public class AnswerService {
             }
 
             setScore(question,answer);
+
         }
 
-        return (List<Answer>)answerRepository.save(answers);
+        saveScoreOfTest(answers.get(0).getTest(),answers);
+
+        answerRepository.save(answers);
+
+        return testService.updateTest(answers.get(0).getTest());
+    }
+
+    private void saveScoreOfTest(Test test, List<Answer> answers) {
+
+        int totalScore = 0;
+
+        for(int i=0; i < answers.size(); i++ ) {
+            totalScore += answers.get(i).getScore();
+        }
+
+        test.setScore(totalScore);
     }
 
     private void setScore(Question question, Answer answer) {
@@ -416,7 +432,7 @@ public class AnswerService {
                     relativePathToScriptFolder
             );
 
-            if(scriptResult.equals("1")) {
+            if(scriptResult != null && scriptResult.equals("1")) {
                 answer.setScore(2);
             } else {
                 answer.setScore(0);

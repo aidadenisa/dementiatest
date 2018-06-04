@@ -15,6 +15,9 @@ public class Test {
     @Column(name="t_id")
     private int id;
 
+    @Column(name="t_score")
+    private int score;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "testconfigs_id")
     private TestConfiguration testConfiguration;
@@ -48,4 +51,11 @@ public class Test {
         this.patient = patient;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

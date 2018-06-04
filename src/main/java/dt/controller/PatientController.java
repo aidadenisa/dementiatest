@@ -48,6 +48,11 @@ public class PatientController {
         return patientService.savePatientOfDoctor(doctorId,patient);
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "doctors/{doctorId}/patients/{patientId}")
+    public Patient saveExistingPatientOfDoctor(@PathVariable int doctorId, @PathVariable int patientId) {
+        return patientService.saveExistingPatientOfDoctor(doctorId,patientId);
+    }
+
     @RequestMapping("/users/{userId}/patient")
     public Patient getPatientAttachedToAccount(@PathVariable int userId) {
         return patientService.getPatientAttachedToAccount(userId);

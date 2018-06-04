@@ -1,6 +1,8 @@
 package dt.service;
 
 import dt.model.Doctor;
+import dt.model.Patient;
+import dt.model.UserAccount;
 import dt.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +39,16 @@ public class DoctorService {
     public void deleteDoctor(int doctorConfigId) {
         doctorRepository.delete(doctorConfigId);
     }
-    
+
+    public Doctor getDoctorAttachedToAccount(int userId) {
+        return doctorRepository.findByUserAccountId(userId);
+    }
+
+    public Doctor addDoctorWithAccount(int userId) {
+        UserAccount user = new UserAccount();
+        user.setId(userId);
+        Doctor newDoctor = new Doctor();
+        newDoctor.setUserAccount(user);
+        return doctorRepository.save(newDoctor);
+    }
 }

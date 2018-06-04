@@ -42,8 +42,8 @@ public class TestService {
         return testRepository.findOne(testId);
     }
 
-    public void updateTest(Test test) {
-        testRepository.save(test);
+    public Test updateTest(Test test) {
+         return testRepository.save(test);
     }
 
     public void deleteTest(int testConfigId) {

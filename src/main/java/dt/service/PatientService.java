@@ -20,9 +20,6 @@ public class PatientService {
     @Autowired
     private DoctorService doctorService;
 
-    @Autowired
-    private UserService userService;
-
     public List<Patient> getAllPatients() {
 
         List<Patient> patients = new ArrayList<>();
@@ -80,5 +77,21 @@ public class PatientService {
         Patient newPatient = new Patient();
         newPatient.setUserAccount(user);
         return patientRepository.save(newPatient);
+    }
+
+    public Patient saveExistingPatientOfDoctor(int doctorId, int patientId) {
+
+        Doctor doctor = doctorService.getDoctor(doctorId);
+
+        Patient patient = patientRepository.findOne(patientId);
+
+        if(patient != null &&  patient.getDoctors() != null && doctor != null) {
+//            patient.getDoctors().add(doctor);
+//            return patientRepository.save(patient);
+            doctor.getPatients().add(patient);
+            doctorService.updateDoctor(doctor);
+            return patient;
+        }
+        return null;
     }
 }

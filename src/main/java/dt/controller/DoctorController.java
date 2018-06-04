@@ -37,5 +37,15 @@ public class DoctorController {
     public void deleteDoctor(@PathVariable int doctorId) {
         doctorService.deleteDoctor(doctorId);
     }
+
+    @RequestMapping("/users/{userId}/doctor")
+    public Doctor getDoctorAttachedToAccount(@PathVariable int userId) {
+        return doctorService.getDoctorAttachedToAccount(userId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/users/{userId}/doctor")
+    public Doctor saveDoctorWithAccount(@PathVariable int userId) {
+        return doctorService.addDoctorWithAccount(userId);
+    }
     
 }
