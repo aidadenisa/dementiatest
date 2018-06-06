@@ -45,4 +45,9 @@ public class AnswerController {
         return answerService.saveAnswersToTest(patientId, testConfigId, answers);
     }
 
+    @RequestMapping( "/patient/{patientId}/test/{testId}/answers")
+    public List<Answer> saveTestResults(@PathVariable int patientId, @PathVariable int testId){
+        return answerService.getAnswersOfPatientTest(patientId, testId);
+    }
+
 }

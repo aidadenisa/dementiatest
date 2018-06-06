@@ -102,40 +102,68 @@ public class AnswerService {
         Test existingTest = testService.getTestByPatientAndConfiguration(testConfiguration, patient);
         Test test = new Test();
 
+        List<Answer> existingAnswers;
+
         if(existingTest == null) {
+
             test.setTestConfiguration(testConfiguration);
             test.setPatient(patient);
             testService.addTest(test);
-        }
 
-        for (int i = 0; i < answers.size(); i++) {
+            for (int i = 0; i < answers.size(); i++) {
 
-            Answer answer = answers.get(i);
+                Answer answer= answers.get(i);
 
-            if (existingTest == null) {
                 answer.setTest(test);
-            } else {
-                answer.setTest(existingTest);
-            }
 
-            if (patient != null) {
                 answer.setPatient(patient);
-            }
 
-            Question question = questionService.getQuestion(answer.getQuestion().getId());
-            if (question != null) {
+                Question question = questionService.getQuestion(answer.getQuestion().getId());
                 answer.setQuestion(question);
+
+                setScore(question,answer);
             }
 
-            setScore(question,answer);
+            saveScoreOfTest(answers.get(0).getTest(),answers);
+
+            answerRepository.save(answers);
+
+            return testService.updateTest(answers.get(0).getTest());
+
+        } else {
+
+            existingAnswers = answerRepository.findAllByPatientAndTest(patient,existingTest);
+
+            if(existingAnswers.size() > 0) {
+                for (int i = 0; i < answers.size(); i++) {
+
+                    Answer answer = getExistingAnswer(answers.get(i), existingAnswers);
+
+                    answer.setAnswer(answers.get(i).getAnswer());
+
+                    setScore(answer.getQuestion(),answer);
+
+                }
+            }
+
+            saveScoreOfTest(existingAnswers.get(0).getTest(),existingAnswers);
+
+            answerRepository.save(existingAnswers);
+
+            return testService.updateTest(existingAnswers.get(0).getTest());
 
         }
 
-        saveScoreOfTest(answers.get(0).getTest(),answers);
+    }
 
-        answerRepository.save(answers);
+    private Answer getExistingAnswer(Answer answer, List<Answer> existingAnswers) {
 
-        return testService.updateTest(answers.get(0).getTest());
+        for( int i = 0; i< existingAnswers.size(); i++ ) {
+            if(existingAnswers.get(i).getQuestion().getId() == answer.getQuestion().getId()) {
+                return existingAnswers.get(i);
+            }
+        }
+        return null;
     }
 
     private void saveScoreOfTest(Test test, List<Answer> answers) {
@@ -506,5 +534,12 @@ public class AnswerService {
             }
         }
 
+    }
+
+    public List<Answer> getAnswersOfPatientTest(int patientId, int testId) {
+        Patient patient = patientService.getPatient(patientId);
+        Test test = testService.getTest(testId);
+
+        return answerRepository.findAllByPatientAndTest(patient, test);
     }
 }
