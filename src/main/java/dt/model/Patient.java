@@ -12,7 +12,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="p_id")
-    private int id;
+    private long id;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "u_id")
@@ -25,7 +25,7 @@ public class Patient {
     @JsonIgnore
     private List<Doctor> doctors;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

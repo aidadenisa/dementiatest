@@ -20,7 +20,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/questions/{questionId}")
-    public Question getQuestion(@PathVariable int questionId) {
+    public Question getQuestion(@PathVariable long questionId) {
         return questionService.getQuestion(questionId);
     }
 
@@ -35,27 +35,27 @@ public class QuestionController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE ,value = "/questions/{questionId}")
-    public void deleteQuestion(@PathVariable int questionId) {
+    public void deleteQuestion(@PathVariable long questionId) {
         questionService.deleteQuestion(questionId);
     }
 
     @RequestMapping("testconfigs/{testConfigId}/questions")
-    public List<Question> getAllQuestionsFromATestConfig(@PathVariable int testConfigId) {
+    public List<Question> getAllQuestionsFromATestConfig(@PathVariable long testConfigId) {
         return questionService.getAllQuestionsFromTestConfig(testConfigId);
     }
 
     @RequestMapping(method = RequestMethod.POST ,value = "testconfigs/{testConfigId}/questions")
-    public void saveQuestionsFromATestConfig(@PathVariable int testConfigId, @RequestBody List<Question> questions) {
+    public void saveQuestionsFromATestConfig(@PathVariable long testConfigId, @RequestBody List<Question> questions) {
         questionService.saveQuestionsToTestConfiguration(testConfigId, questions);
     }
 
     @RequestMapping("testconfigs/{testConfigId}/questions/{questionId}")
-    public Question getQuestionFromTestConfig(@PathVariable int testConfigId, @PathVariable int questionId) {
+    public Question getQuestionFromTestConfig(@PathVariable long testConfigId, @PathVariable long questionId) {
         return questionService.getQuestion(questionId);
     }
 
     @RequestMapping(method = RequestMethod.POST ,value = "questions/{questionId}/points")
-    public void saveQuestionPoints(@PathVariable int questionId, @RequestBody List<ConnectPoint> points) {
+    public void saveQuestionPoints(@PathVariable long questionId, @RequestBody List<ConnectPoint> points) {
         questionService.savePointsToQuestion(questionId, points);
     }
 

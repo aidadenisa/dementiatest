@@ -5,7 +5,6 @@ import dt.model.Patient;
 import dt.model.UserAccount;
 import dt.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class PatientService {
         patientRepository.save(patient);
     }
 
-    public Patient getPatient(int patientId) {
+    public Patient getPatient(long patientId) {
         return patientRepository.findOne(patientId);
     }
 
@@ -40,11 +39,11 @@ public class PatientService {
         patientRepository.save(patient);
     }
 
-    public void deletePatient(int patientConfigId) {
+    public void deletePatient(long patientConfigId) {
         patientRepository.delete(patientConfigId);
     }
 
-    public List<Patient> getPatientsOfDoctor(int doctorId) {
+    public List<Patient> getPatientsOfDoctor(long doctorId) {
         Doctor doctor = doctorService.getDoctor(doctorId);
         if(doctor != null) {
             return doctor.getPatients();
@@ -53,7 +52,7 @@ public class PatientService {
         }
     }
 
-    public List<Patient> savePatientOfDoctor(int doctorId, Patient patient) {
+    public List<Patient> savePatientOfDoctor(long doctorId, Patient patient) {
 
         Doctor doctor = doctorService.getDoctor(doctorId);
         if(doctor != null) {
@@ -66,11 +65,11 @@ public class PatientService {
 
     }
 
-    public Patient getPatientAttachedToAccount(int userId) {
+    public Patient getPatientAttachedToAccount(long userId) {
         return patientRepository.findByUserAccountId(userId);
     }
 
-    public Patient addPatientWithAccount(int userId) {
+    public Patient addPatientWithAccount(long userId) {
 //        UserAccount user = userService.getUser(userId);
         UserAccount user = new UserAccount();
         user.setId(userId);
@@ -79,7 +78,7 @@ public class PatientService {
         return patientRepository.save(newPatient);
     }
 
-    public Patient saveExistingPatientOfDoctor(int doctorId, int patientId) {
+    public Patient saveExistingPatientOfDoctor(long doctorId, long patientId) {
 
         Doctor doctor = doctorService.getDoctor(doctorId);
 

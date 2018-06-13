@@ -19,7 +19,7 @@ public class TestController {
     }
 
     @RequestMapping("/tests/{testId}")
-    public Test getTest(@PathVariable int testId) {
+    public Test getTest(@PathVariable long testId) {
         return testService.getTest(testId);
     }
 
@@ -34,12 +34,12 @@ public class TestController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/tests/{testId}")
-    public void deleteTest(@PathVariable int testId) {
+    public void deleteTest(@PathVariable long testId) {
         testService.deleteTest(testId);
     }
 
     @RequestMapping( value = "/patient/{patientId}/testConfig/{testConfigId}")
-    public Test deleteTest(@PathVariable int patientId, @PathVariable int testConfigId) {
+    public Test deleteTest(@PathVariable long patientId, @PathVariable long testConfigId) {
         return testService.getTestOfPatientWithConfig(patientId,testConfigId);
     }
 

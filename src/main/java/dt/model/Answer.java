@@ -10,7 +10,7 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="a_id")
-    private int id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name="patient_id")
@@ -31,7 +31,7 @@ public class Answer {
     @Column(name="a_score")
     private int score;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

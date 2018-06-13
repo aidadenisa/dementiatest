@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
         return users;
     }
 
-    public UserAccount getUser(int userId) {
+    public UserAccount getUser(long userId) {
         return userRepository.findOne(userId);
     }
 
@@ -35,7 +35,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
     public void saveUser(UserAccount user) {
-        user.setBirthday(new Date());
+//        user.setBirthday(new Date());
         userRepository.save(user);
     }
 
@@ -44,7 +44,7 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public void deleteUser(int userId) {
+    public void deleteUser(long userId) {
         userRepository.delete(userId);
     }
 

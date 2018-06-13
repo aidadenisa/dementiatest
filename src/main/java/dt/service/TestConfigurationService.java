@@ -1,6 +1,5 @@
 package dt.service;
 
-import dt.model.Question;
 import dt.model.TestConfiguration;
 import dt.repository.TestConfigurationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class TestConfigurationService {
         testConfigurationRepository.save(testConfiguration);
     }
 
-    public TestConfiguration getTestConfiguration(int testConfigurationId) {
+    public TestConfiguration getTestConfiguration(long testConfigurationId) {
         return testConfigurationRepository.findOne(testConfigurationId);
     }
 
@@ -41,7 +40,7 @@ public class TestConfigurationService {
         testConfigurationRepository.save(testConfiguration);
     }
 
-    public void deleteTestConfiguration(int testConfigId) {
+    public void deleteTestConfiguration(long testConfigId) {
         testConfigurationRepository.delete(testConfigId);
     }
 }

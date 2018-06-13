@@ -19,7 +19,7 @@ public class DoctorController {
     }
 
     @RequestMapping("/doctors/{doctorId}")
-    public Doctor getAllDoctors(@PathVariable int doctorId) {
+    public Doctor getAllDoctors(@PathVariable long doctorId) {
         return doctorService.getDoctor(doctorId);
     }
 
@@ -34,17 +34,17 @@ public class DoctorController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/doctors/{doctorId}")
-    public void deleteDoctor(@PathVariable int doctorId) {
+    public void deleteDoctor(@PathVariable long doctorId) {
         doctorService.deleteDoctor(doctorId);
     }
 
     @RequestMapping("/users/{userId}/doctor")
-    public Doctor getDoctorAttachedToAccount(@PathVariable int userId) {
+    public Doctor getDoctorAttachedToAccount(@PathVariable long userId) {
         return doctorService.getDoctorAttachedToAccount(userId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/{userId}/doctor")
-    public Doctor saveDoctorWithAccount(@PathVariable int userId) {
+    public Doctor saveDoctorWithAccount(@PathVariable long userId) {
         return doctorService.addDoctorWithAccount(userId);
     }
     

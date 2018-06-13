@@ -1,7 +1,5 @@
 package dt.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class TestConfiguration {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="testconfigs_id")
-    private int id;
+    private long id;
 
     @Column(name="t_name")
     private String name;
@@ -31,7 +29,7 @@ public class TestConfiguration {
         this.id = id;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

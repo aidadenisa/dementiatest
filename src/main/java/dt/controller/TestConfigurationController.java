@@ -19,7 +19,7 @@ public class TestConfigurationController {
     }
 
     @RequestMapping("/testconfigs/{testConfigId}")
-    public TestConfiguration getAllTestConfigurations(@PathVariable int testConfigId) {
+    public TestConfiguration getAllTestConfigurations(@PathVariable long testConfigId) {
         return testConfigurationService.getTestConfiguration(testConfigId);
     }
 
@@ -34,7 +34,7 @@ public class TestConfigurationController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/testconfigs/{testConfigId}")
-    public void deleteTestConfiguration(@PathVariable int testConfigId) {
+    public void deleteTestConfiguration(@PathVariable long testConfigId) {
         testConfigurationService.deleteTestConfiguration(testConfigId);
     }
 

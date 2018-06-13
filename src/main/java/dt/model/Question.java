@@ -1,12 +1,8 @@
 package dt.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dt.model.TestConfiguration;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.awt.*;
 import java.util.List;
 
 @Entity
@@ -16,7 +12,7 @@ public class Question implements Comparable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="q_id")
-    private int id;
+    private long id;
 
 //    @NotNull
     @Column(name="q_text")
@@ -80,7 +76,7 @@ public class Question implements Comparable{
     @JsonIgnore
     private List<TestConfiguration> testConfigurations;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

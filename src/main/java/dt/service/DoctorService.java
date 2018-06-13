@@ -1,7 +1,6 @@
 package dt.service;
 
 import dt.model.Doctor;
-import dt.model.Patient;
 import dt.model.UserAccount;
 import dt.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class DoctorService {
         doctorRepository.save(doctor);
     }
 
-    public Doctor getDoctor(int doctorId) {
+    public Doctor getDoctor(long doctorId) {
         return doctorRepository.findOne(doctorId);
     }
 
@@ -36,15 +35,15 @@ public class DoctorService {
         doctorRepository.save(doctor);
     }
 
-    public void deleteDoctor(int doctorConfigId) {
+    public void deleteDoctor(long doctorConfigId) {
         doctorRepository.delete(doctorConfigId);
     }
 
-    public Doctor getDoctorAttachedToAccount(int userId) {
+    public Doctor getDoctorAttachedToAccount(long userId) {
         return doctorRepository.findByUserAccountId(userId);
     }
 
-    public Doctor addDoctorWithAccount(int userId) {
+    public Doctor addDoctorWithAccount(long userId) {
         UserAccount user = new UserAccount();
         user.setId(userId);
         Doctor newDoctor = new Doctor();

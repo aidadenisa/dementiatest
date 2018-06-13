@@ -19,7 +19,7 @@ public class PatientController {
     }
 
     @RequestMapping("/patients/{patientId}")
-    public Patient getPatient(@PathVariable int patientId) {
+    public Patient getPatient(@PathVariable long patientId) {
         return patientService.getPatient(patientId);
     }
 
@@ -34,32 +34,32 @@ public class PatientController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/patients/{patientId}")
-    public void deletePatient(@PathVariable int patientId) {
+    public void deletePatient(@PathVariable long patientId) {
         patientService.deletePatient(patientId);
     }
 
     @RequestMapping("doctors/{doctorId}/patients")
-    public List<Patient> getPatientsOfDoctor(@PathVariable int doctorId) {
+    public List<Patient> getPatientsOfDoctor(@PathVariable long doctorId) {
         return patientService.getPatientsOfDoctor(doctorId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "doctors/{doctorId}/patients")
-    public List<Patient> savePatientOfDoctor(@PathVariable int doctorId, @RequestBody Patient patient) {
+    public List<Patient> savePatientOfDoctor(@PathVariable long doctorId, @RequestBody Patient patient) {
         return patientService.savePatientOfDoctor(doctorId,patient);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "doctors/{doctorId}/patients/{patientId}")
-    public Patient saveExistingPatientOfDoctor(@PathVariable int doctorId, @PathVariable int patientId) {
+    public Patient saveExistingPatientOfDoctor(@PathVariable long doctorId, @PathVariable long patientId) {
         return patientService.saveExistingPatientOfDoctor(doctorId,patientId);
     }
 
     @RequestMapping("/users/{userId}/patient")
-    public Patient getPatientAttachedToAccount(@PathVariable int userId) {
+    public Patient getPatientAttachedToAccount(@PathVariable long userId) {
         return patientService.getPatientAttachedToAccount(userId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/{userId}/patient")
-    public Patient savePatientWithAccount(@PathVariable int userId) {
+    public Patient savePatientWithAccount(@PathVariable long userId) {
         return patientService.addPatientWithAccount(userId);
     }
 }

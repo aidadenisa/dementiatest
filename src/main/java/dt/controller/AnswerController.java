@@ -21,7 +21,7 @@ public class AnswerController {
     }
 
     @RequestMapping("/answers/{answerId}")
-    public Answer getAllAnswers(@PathVariable int answerId) {
+    public Answer getAllAnswers(@PathVariable long answerId) {
         return answerService.getAnswer(answerId);
     }
 
@@ -36,17 +36,17 @@ public class AnswerController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/answers/{answerId}")
-    public void deleteAnswer(@PathVariable int answerId) {
+    public void deleteAnswer(@PathVariable long answerId) {
         answerService.deleteAnswer(answerId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/patient/{patientId}/testConfig/{testConfigId}/answers")
-    public Test saveTestResults(@PathVariable int patientId, @PathVariable int testConfigId, @RequestBody List<Answer> answers){
+    public Test saveTestResults(@PathVariable long patientId, @PathVariable long testConfigId, @RequestBody List<Answer> answers){
         return answerService.saveAnswersToTest(patientId, testConfigId, answers);
     }
 
     @RequestMapping( "/patient/{patientId}/test/{testId}/answers")
-    public List<Answer> saveTestResults(@PathVariable int patientId, @PathVariable int testId){
+    public List<Answer> saveTestResults(@PathVariable long patientId, @PathVariable long testId){
         return answerService.getAnswersOfPatientTest(patientId, testId);
     }
 

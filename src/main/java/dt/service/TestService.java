@@ -3,7 +3,6 @@ package dt.service;
 import dt.model.Patient;
 import dt.model.Test;
 import dt.model.TestConfiguration;
-import dt.repository.TestConfigurationRepository;
 import dt.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +37,7 @@ public class TestService {
         }
     }
 
-    public Test getTest(int testId) {
+    public Test getTest(long testId) {
         return testRepository.findOne(testId);
     }
 
@@ -46,7 +45,7 @@ public class TestService {
          return testRepository.save(test);
     }
 
-    public void deleteTest(int testConfigId) {
+    public void deleteTest(long testConfigId) {
         testRepository.delete(testConfigId);
     }
 
@@ -54,7 +53,7 @@ public class TestService {
         return testRepository.findByPatientAndTestConfiguration(patient,testConfiguration);
     }
 
-    public Test getTestOfPatientWithConfig(int patientId, int testConfigId) {
+    public Test getTestOfPatientWithConfig(long patientId, long testConfigId) {
 
         TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
         Patient patient = patientService.getPatient(patientId);

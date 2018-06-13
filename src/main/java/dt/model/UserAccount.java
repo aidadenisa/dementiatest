@@ -1,9 +1,7 @@
 package dt.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -12,7 +10,7 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="u_id")
-    private int id;
+    private long id;
 
 //    @NotNull
     @Column(name="u_hash", unique = true)
@@ -42,11 +40,11 @@ public class UserAccount {
     @Column(name="u_role")
     private int role;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

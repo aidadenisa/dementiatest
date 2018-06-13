@@ -1,8 +1,6 @@
 package dt.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -13,7 +11,7 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="t_id")
-    private int id;
+    private long id;
 
     @Column(name="t_score")
     private int score;
@@ -27,7 +25,7 @@ public class Test {
     @JoinColumn(name="patient_id")
     private Patient patient;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

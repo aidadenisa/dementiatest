@@ -11,7 +11,7 @@ public class ConnectPoint {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="cp_id")
-    private int id;
+    private long id;
 
     @Column(name="cp_x")
     private int x;
@@ -32,11 +32,11 @@ public class ConnectPoint {
 
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

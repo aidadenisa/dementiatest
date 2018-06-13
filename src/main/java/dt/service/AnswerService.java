@@ -52,7 +52,7 @@ public class AnswerService {
         answerRepository.save(answer);
     }
 
-    public Answer getAnswer(int answerId) {
+    public Answer getAnswer(long answerId) {
         return answerRepository.findOne(answerId);
     }
 
@@ -60,7 +60,7 @@ public class AnswerService {
         answerRepository.save(answer);
     }
 
-    public void deleteAnswer(int answerConfigId) {
+    public void deleteAnswer(long answerConfigId) {
         answerRepository.delete(answerConfigId);
     }
 
@@ -72,7 +72,7 @@ public class AnswerService {
 
         Patient patient = patientService.getPatient(answers.get(0).getPatient().getId());
 
-//        for(int i = 0; i<answers.size(); i++ ) {
+//        for(long i = 0; i<answers.size(); i++ ) {
 //
 //            Answer answer = answers.get(i);
 //
@@ -94,7 +94,7 @@ public class AnswerService {
         answerRepository.save(answers);
     }
 
-    public Test saveAnswersToTest(int patientId, int testConfigId, List<Answer> answers) {
+    public Test saveAnswersToTest(long patientId, long testConfigId, List<Answer> answers) {
 
         TestConfiguration testConfiguration = testConfigurationService.getTestConfiguration(testConfigId);
         Patient patient = patientService.getPatient(patientId);
@@ -536,7 +536,7 @@ public class AnswerService {
 
     }
 
-    public List<Answer> getAnswersOfPatientTest(int patientId, int testId) {
+    public List<Answer> getAnswersOfPatientTest(long patientId, long testId) {
         Patient patient = patientService.getPatient(patientId);
         Test test = testService.getTest(testId);
 
