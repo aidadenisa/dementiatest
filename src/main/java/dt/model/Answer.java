@@ -24,7 +24,6 @@ public class Answer {
     @JoinColumn(name="question_id")
     private Question question;
 
-//    @NotNull
     @Column(name="a_answer")
     private String answer;
 

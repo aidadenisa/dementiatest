@@ -72,25 +72,6 @@ public class AnswerService {
 
         Patient patient = patientService.getPatient(answers.get(0).getPatient().getId());
 
-//        for(long i = 0; i<answers.size(); i++ ) {
-//
-//            Answer answer = answers.get(i);
-//
-//            if(test != null) {
-//                answer.setTest(test);
-//            }
-//
-//            if(testConfiguration != null) {
-//                test.setTestConfiguration(testConfiguration);
-//                answer.setTest(test);
-//            }
-//
-//            if(patient != null) {
-//                answer.setPatient(patient);
-//            }
-//
-//        }
-
         answerRepository.save(answers);
     }
 
@@ -446,13 +427,8 @@ public class AnswerService {
 
             inverseColorsOfImage(image);
 
-            Graphics2D g = bwimage.createGraphics();
-            g.drawImage(image, 0, 0, null);
-
-            //create image file
             File imagefile = new File("prediction\\image.jpg");
             ImageIO.write(bwimage, "jpg", imagefile);
-//            ImageIO.write(image, "jpg", imagefile);
 
             String scriptResult = executeAIScript(
                     relativePathToScript,
@@ -516,8 +492,6 @@ public class AnswerService {
 
     private void inverseColorsOfImage(BufferedImage image) {
 
-        //inverse the colours
-
         for (int x = 0; x < image.getWidth(); x++) {
             for (int y = 0; y < image.getHeight(); y++) {
                 int rgba = image.getRGB(x, y);
@@ -529,7 +503,6 @@ public class AnswerService {
                 } else {
                     col = new Color(Color.black.getRGB());
                 }
-//                col = new Color(255-col.getRed(), 255-col.getGreen(), 255 - col.getBlue());
                 image.setRGB(x, y, col.getRGB());
             }
         }

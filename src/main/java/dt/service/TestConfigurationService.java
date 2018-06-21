@@ -12,6 +12,8 @@ import java.util.List;
 @Service
 public class TestConfigurationService {
 
+    private static final int PERSONAL_TEST_ID = 100;
+
     @Autowired
     private TestConfigurationRepository testConfigurationRepository;
 
