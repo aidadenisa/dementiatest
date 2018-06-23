@@ -95,21 +95,14 @@ public class AnswerService {
 
                 Answer answer= answers.get(i);
 
-                answer.setTest(test);
-
-                answer.setPatient(patient);
-
-                Question question = questionService.getQuestion(answer.getQuestion().getId());
-                answer.setQuestion(question);
-
-                setScore(question,answer);
+                createNewAnswer(patient, test, answer);
             }
 
-            saveScoreOfTest(answers.get(0).getTest(),answers);
+            saveScoreOfTest(test,answers);
 
             answerRepository.save(answers);
 
-            return testService.updateTest(answers.get(0).getTest());
+            return testService.updateTest(test);
 
         } else {
 
@@ -120,7 +113,12 @@ public class AnswerService {
 
                     Answer answer = getExistingAnswer(answers.get(i), existingAnswers);
 
-                    answer.setAnswer(answers.get(i).getAnswer());
+                    if(answer != null) {
+                        answer.setAnswer(answers.get(i).getAnswer());
+                    } else {
+                        answer = answers.get(i);
+                        createNewAnswer(patient,test,answer);
+                    }
 
                     setScore(answer.getQuestion(),answer);
 
@@ -134,6 +132,19 @@ public class AnswerService {
             return testService.updateTest(existingAnswers.get(0).getTest());
 
         }
+
+    }
+
+    private void createNewAnswer(Patient patient, Test test, Answer answer) {
+
+        answer.setTest(test);
+
+        answer.setPatient(patient);
+
+        Question question = questionService.getQuestion(answer.getQuestion().getId());
+        answer.setQuestion(question);
+
+        setScore(question,answer);
 
     }
 
