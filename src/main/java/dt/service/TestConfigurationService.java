@@ -18,13 +18,19 @@ public class TestConfigurationService {
     private TestConfigurationRepository testConfigurationRepository;
 
     public List<TestConfiguration> getAllTestConfigurations() {
-
+        TestConfiguration personalTestConfiguration = null;
         List<TestConfiguration> testconfigs = new ArrayList<>();
         testConfigurationRepository.findAll().forEach(testconfigs::add);
         for( int i = 0; i< testconfigs.size(); i++) {
+            if(testconfigs.get(i).getId() == 100) {
+                personalTestConfiguration = testconfigs.get(i);
+            }
             if(testconfigs.get(i).getQuestions().get(0).getIndex()>0) {
                 Collections.sort(testconfigs.get(i).getQuestions());
             }
+        }
+        if(personalTestConfiguration != null) {
+            testconfigs.remove(personalTestConfiguration);
         }
         return testconfigs;
 
