@@ -472,9 +472,13 @@ public class AnswerService {
 //            Path pathToScript = Paths.get(workingDirectoryPath + relativePathToScript).toRealPath();
 //            Path pathToImage = Paths.get(workingDirectoryPath + relativePathToImage).toRealPath();
 //            Path pathToScriptFolder = Paths.get(workingDirectoryPath + relativePathToScriptFolder).toRealPath();
-            Path pathToScript = Paths.get( relativePathToScript).toRealPath();
-            Path pathToImage = Paths.get(relativePathToImage).toRealPath();
-            Path pathToScriptFolder = Paths.get( relativePathToScriptFolder).toRealPath();
+
+
+            Path pathToScript = Paths.get( relativePathToScript);
+            Path pathToImage = Paths.get(relativePathToImage);
+            Path pathToScriptFolder = Paths.get( relativePathToScriptFolder);
+
+
 
             System.out.println( "path to script" + pathToScript.toString() );
             System.out.println( "path to image" + pathToImage.toString() );
