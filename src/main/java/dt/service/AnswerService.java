@@ -467,11 +467,14 @@ public class AnswerService {
 
         try {
 
-            workingDirectoryPath = new File(".").getCanonicalPath();
+//            workingDirectoryPath = new File(".").getCanonicalPath();
 
-            Path pathToScript = Paths.get(workingDirectoryPath + relativePathToScript).toRealPath();
-            Path pathToImage = Paths.get(workingDirectoryPath + relativePathToImage).toRealPath();
-            Path pathToScriptFolder = Paths.get(workingDirectoryPath + relativePathToScriptFolder).toRealPath();
+//            Path pathToScript = Paths.get(workingDirectoryPath + relativePathToScript).toRealPath();
+//            Path pathToImage = Paths.get(workingDirectoryPath + relativePathToImage).toRealPath();
+//            Path pathToScriptFolder = Paths.get(workingDirectoryPath + relativePathToScriptFolder).toRealPath();
+            Path pathToScript = Paths.get( relativePathToScript).toRealPath();
+            Path pathToImage = Paths.get(relativePathToImage).toRealPath();
+            Path pathToScriptFolder = Paths.get( relativePathToScriptFolder).toRealPath();
 
             String[] cmd = {
                     "py",
