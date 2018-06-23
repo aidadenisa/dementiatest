@@ -507,7 +507,7 @@ public class AnswerService {
             System.out.println( "path to script folder" + pathToScriptFolder.toString() );
 
             String[] cmd = {
-                    "python3",
+                    "usr/bin/python3",
                     pathToScript.toString(),
                     "--image",
                     pathToImage.toString(),
