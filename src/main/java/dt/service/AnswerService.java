@@ -176,11 +176,18 @@ public class AnswerService {
                 && question.getCorrectAnswer() != null
                 && question.getCorrectAnswer().equals("cube")) {
 
+//            scoreCanvasBasedQuestion(
+//                    answer,
+//                    "\\root\\dementia-cnn\\cube-cnn\\predict.py",
+//                    "\\root\\dementia-cnn\\prediction\\image.jpg",
+//                    "\\root\\dementia-cnn\\cube-cnn\\"
+//            );
+
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\root\\dementia-cnn\\cube-cnn\\predict.py",
-                    "\\root\\dementia-cnn\\prediction\\image.jpg",
-                    "\\root\\dementia-cnn\\cube-cnn\\"
+                    "/root/dementia-cnn/cube-cnn/predict.py",
+                    "/root/dementia-cnn/prediction/image.jpg",
+                    "/root/dementia-cnn/cube-cnn/"
             );
         }
 
@@ -189,22 +196,36 @@ public class AnswerService {
                 && question.getCorrectAnswer() != null
                 && question.getCorrectAnswer().equals("clock")) {
 
+//            scoreCanvasBasedQuestion(
+//                    answer,
+//                    "\\root\\dementia-cnn\\clock-cnn\\predict.py",
+//                    "\\root\\dementia-cnn\\prediction\\image.jpg",
+//                    "\\root\\dementia-cnn\\clock-cnn\\"
+//            );
+
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\root\\dementia-cnn\\clock-cnn\\predict.py",
-                    "\\root\\dementia-cnn\\prediction\\image.jpg",
-                    "\\root\\dementia-cnn\\clock-cnn\\"
+                    "/root/dementia-cnn/clock-cnn/predict.py",
+                    "/root/dementia-cnn/prediction/image.jpg",
+                    "/root/dementia-cnn/clock-cnn/"
             );
 
         }
 
         if( question.getDragAndDropConfiguration() != null && question.getDragAndDropConfiguration()) {
 
+//            scoreCanvasBasedQuestion(
+//                    answer,
+//                    "\\root\\dementia-cnn\\squares-cnn\\predict.py",
+//                    "\\root\\dementia-cnn\\prediction\\image.jpg",
+//                    "\\root\\dementia-cnn\\squares-cnn\\"
+//            );
+
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\root\\dementia-cnn\\squares-cnn\\predict.py",
-                    "\\root\\dementia-cnn\\prediction\\image.jpg",
-                    "\\root\\dementia-cnn\\squares-cnn\\"
+                    "/root/dementia-cnn/clock-cnn/predict.py",
+                    "/root/dementia-cnn/prediction/image.jpg",
+                    "/root/dementia-cnn/clock-cnn/"
             );
 
         }
@@ -438,7 +459,8 @@ public class AnswerService {
 
             inverseColorsOfImage(image);
 
-            File imagefile = new File("\\root\\dementia-cnn\\prediction\\image.jpg");
+//            File imagefile = new File("\\root\\dementia-cnn\\prediction\\image.jpg");
+            File imagefile = new File("/root/dementia-cnn/prediction/image.jpg");
             ImageIO.write(bwimage, "jpg", imagefile);
 
             String scriptResult = executeAIScript(
