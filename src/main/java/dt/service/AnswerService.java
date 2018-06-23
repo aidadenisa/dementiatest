@@ -178,9 +178,9 @@ public class AnswerService {
 
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\..\\dementia-cnn\\cube-cnn\\predict.py",
+                    "\\root\\dementia-cnn\\cube-cnn\\predict.py",
                     "\\prediction\\image.jpg",
-                    "\\..\\dementia-cnn\\cube-cnn\\"
+                    "\\root\\dementia-cnn\\cube-cnn\\"
             );
         }
 
@@ -191,9 +191,9 @@ public class AnswerService {
 
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\..\\dementia-cnn\\clock-cnn\\predict.py",
+                    "\\root\\dementia-cnn\\clock-cnn\\predict.py",
                     "\\prediction\\image.jpg",
-                    "\\..\\dementia-cnn\\clock-cnn\\"
+                    "\\root\\dementia-cnn\\clock-cnn\\"
             );
 
         }
@@ -202,9 +202,9 @@ public class AnswerService {
 
             scoreCanvasBasedQuestion(
                     answer,
-                    "\\..\\dementia-cnn\\squares-cnn\\predict.py",
+                    "\\root\\dementia-cnn\\squares-cnn\\predict.py",
                     "\\prediction\\image.jpg",
-                    "\\..\\dementia-cnn\\squares-cnn\\"
+                    "\\root\\dementia-cnn\\squares-cnn\\"
             );
 
         }
