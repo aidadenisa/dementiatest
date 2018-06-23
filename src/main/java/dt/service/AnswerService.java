@@ -472,13 +472,9 @@ public class AnswerService {
 //            Path pathToScript = Paths.get(workingDirectoryPath + relativePathToScript).toRealPath();
 //            Path pathToImage = Paths.get(workingDirectoryPath + relativePathToImage).toRealPath();
 //            Path pathToScriptFolder = Paths.get(workingDirectoryPath + relativePathToScriptFolder).toRealPath();
-            Path pathToScript = Paths.get(relativePathToScript).toRealPath();
+            Path pathToScript = Paths.get( relativePathToScript).toRealPath();
             Path pathToImage = Paths.get(relativePathToImage).toRealPath();
-            Path pathToScriptFolder = Paths.get(relativePathToScriptFolder).toRealPath();
-
-            System.out.println( "path to script" + pathToScript.toString() );
-            System.out.println( "path to image" + pathToImage.toString() );
-            System.out.println( "path to script folder" + pathToScriptFolder.toString() );
+            Path pathToScriptFolder = Paths.get( relativePathToScriptFolder).toRealPath();
 
             String[] cmd = {
                     "py",
