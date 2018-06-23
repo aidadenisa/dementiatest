@@ -438,7 +438,7 @@ public class AnswerService {
 
             inverseColorsOfImage(image);
 
-            File imagefile = new File("prediction\\image.jpg");
+            File imagefile = new File("\\root\\dementia-cnn\\prediction\\image.jpg");
             ImageIO.write(bwimage, "jpg", imagefile);
 
             String scriptResult = executeAIScript(
