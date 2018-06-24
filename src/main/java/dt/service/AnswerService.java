@@ -486,7 +486,7 @@ public class AnswerService {
         String workingDirectoryPath = null;
         Process process;
         String line = "";
-
+        String output = null;
         try {
 
 //            workingDirectoryPath = new File(".").getCanonicalPath();
@@ -522,11 +522,11 @@ public class AnswerService {
             BufferedReader bfr = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String output = null;
+
             while ((output=bfr.readLine())!=null)
             {
 
-                System.out.println(output);
+                return output;
             }
 
             line = bfr.readLine();
@@ -537,7 +537,7 @@ public class AnswerService {
             e.printStackTrace();
         }
 
-        return line;
+        return null;
     }
 
     private void inverseColorsOfImage(BufferedImage image) {
