@@ -187,7 +187,7 @@ public class AnswerService {
                     answer,
                     "/root/dementia-cnn/cube-cnn/predict.py",
                     "/root/dementia-cnn/prediction/image.jpg",
-                    "/root/dementia-cnn/cube-cnn/"
+                    "/root/dementia-cnn/cube-cnn"
             );
         }
 
@@ -207,7 +207,7 @@ public class AnswerService {
                     answer,
                     "/root/dementia-cnn/clock-cnn/predict.py",
                     "/root/dementia-cnn/prediction/image.jpg",
-                    "/root/dementia-cnn/clock-cnn/"
+                    "/root/dementia-cnn/clock-cnn"
             );
 
         }
@@ -225,7 +225,7 @@ public class AnswerService {
                     answer,
                     "/root/dementia-cnn/clock-cnn/predict.py",
                     "/root/dementia-cnn/prediction/image.jpg",
-                    "/root/dementia-cnn/clock-cnn/"
+                    "/root/dementia-cnn/clock-cnn"
             );
 
         }
@@ -522,11 +522,11 @@ public class AnswerService {
             BufferedReader bfr = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String err = null;
-            while ((err=error.readLine())!=null)
+            String output = null;
+            while ((output=bfr.readLine())!=null)
             {
 
-                System.out.println(err);
+                System.out.println(output);
             }
 
             line = bfr.readLine();
