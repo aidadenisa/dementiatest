@@ -522,6 +522,12 @@ public class AnswerService {
             BufferedReader bfr = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            String err = null;
+            while ((err=error.readLine())!=null)
+            {
+
+                System.out.println(err);
+            }
 
             line = bfr.readLine();
 
