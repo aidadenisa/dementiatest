@@ -469,6 +469,7 @@ public class AnswerService {
                     relativePathToScriptFolder
             );
 
+            System.out.println("acesta este rezultatul după analiza: " + scriptResult);
             if(scriptResult != null && scriptResult.equals("1")) {
                 answer.setScore(2);
             } else {
