@@ -242,7 +242,9 @@ public class AnswerService {
             scoreDateConfiguration(answer);
         }
 
-        if(question.getImage1() != null) {
+        if(question.getImage1() != null
+                && (question.getDrawingConfiguration() == null || !question.getDrawingConfiguration())
+                && (question.getDragAndDropConfiguration() == null || !question.getDragAndDropConfiguration())) {
             scoreImageNamingQuestion(answer, question);
         }
 
