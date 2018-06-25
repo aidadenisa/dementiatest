@@ -96,6 +96,13 @@ public class AnswerService {
                 Answer answer= answers.get(i);
 
                 createNewAnswer(patient, test, answer);
+
+                //if not personal test
+                if(testConfiguration.getId() != 100) {
+                    setScore(answer.getQuestion(),answer);
+
+                }
+
             }
 
             saveScoreOfTest(test,answers);
@@ -120,7 +127,10 @@ public class AnswerService {
                         createNewAnswer(patient,test,answer);
                     }
 
-                    setScore(answer.getQuestion(),answer);
+                    if(testConfiguration.getId() != 100) {
+                        setScore(answer.getQuestion(),answer);
+
+                    }
 
                 }
             }
@@ -143,8 +153,6 @@ public class AnswerService {
 
         Question question = questionService.getQuestion(answer.getQuestion().getId());
         answer.setQuestion(question);
-
-        setScore(question,answer);
 
     }
 
@@ -459,7 +467,10 @@ public class AnswerService {
 
             inverseColorsOfImage(image);
 
-//            File imagefile = new File("\\root\\dementia-cnn\\prediction\\image.jpg");
+            Graphics2D g = bwimage.createGraphics();
+            g.drawImage(image, 0, 0, null);
+
+            //create image file
             File imagefile = new File("/root/dementia-cnn/prediction/image.jpg");
             ImageIO.write(bwimage, "jpg", imagefile);
 
@@ -469,7 +480,6 @@ public class AnswerService {
                     relativePathToScriptFolder
             );
 
-            System.out.println("acesta este rezultatul după analiza: " + scriptResult);
             if(scriptResult != null && scriptResult.equals("1")) {
                 answer.setScore(2);
             } else {
