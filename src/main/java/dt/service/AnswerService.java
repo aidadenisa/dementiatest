@@ -231,9 +231,9 @@ public class AnswerService {
 
             scoreCanvasBasedQuestion(
                     answer,
-                    "/root/dementia-cnn/clock-cnn/predict.py",
+                    "/root/dementia-cnn/squares-cnn/predict.py",
                     "/root/dementia-cnn/prediction/image.jpg",
-                    "/root/dementia-cnn/clock-cnn"
+                    "/root/dementia-cnn/squares-cnn"
             );
 
         }
@@ -479,6 +479,8 @@ public class AnswerService {
                     relativePathToImage,
                     relativePathToScriptFolder
             );
+
+            System.out.println("this is a result: " + scriptResult);
 
             if(scriptResult != null && scriptResult.equals("1")) {
                 answer.setScore(2);
